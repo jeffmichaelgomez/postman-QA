@@ -20,7 +20,7 @@ jobs:
     
     - name: Fetch JSON file
       run: |
-        curl -o collection-sample.json https://api.postman.com/collections/29841776-98eef3ee-5d70-4e94-af29-b536a9bd7e41?access_key=${secrets.POSTMAN_API}
+        curl -o collection-sample.json https://api.postman.com/collections/29841776-98eef3ee-5d70-4e94-af29-b536a9bd7e41?access_key=${{secrets.POSTMAN_API}}
         
     - name: Commit and Push
       run: |
