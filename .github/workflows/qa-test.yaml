@@ -26,6 +26,6 @@ jobs:
       run: |
         git config user.name "jeffmichaelgomez"
         git config user.email "jeffmichaelgomez@gmail.com"
-        git add myfile.json
+        git add collection-sample.json
         git commit -m "Update JSON file"
         git push
