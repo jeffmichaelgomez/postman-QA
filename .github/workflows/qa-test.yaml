@@ -23,9 +23,13 @@ jobs:
         curl -o collection-sample.json https://api.postman.com/collections/29841776-98eef3ee-5d70-4e94-af29-b536a9bd7e41?access_key=${{secrets.POSTMAN_API}}
         
     - name: Commit and Push
+      env:
+        GH_PAT: ${{ secrets.MY_PAT }}  # Use the name you gave to your secret
       run: |
         git config user.name "jeffmichaelgomez"
         git config user.email "jeffmichaelgomez@gmail.com"
         git add collection-sample.json
-        git commit -m "Update JSON file"
-        git push
+        git commit -m "Update JSON file" || echo "No changes to commit"
+        git remote set-url origin https://jeffmichaelgomez:${GH_PAT}@github.com/jeffmichaelgomez/postman-QA.git
+        git push || echo "No changes to push"
+
