@@ -1,0 +1,31 @@
+name: Fetch and Push JSON
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron:  '0 * * * *' # This runs every hour; adjust the timing as needed
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+      
+    - name: Setup Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: '14'
+    
+    - name: Fetch JSON file
+      run: |
+        curl -o collection-sample.json https://api.postman.com/collections/29841776-98eef3ee-5d70-4e94-af29-b536a9bd7e41?access_key=${secrets.POSTMAN_API}
+        
+    - name: Commit and Push
+      run: |
+        git config user.name "jeffmichaelgomez"
+        git config user.email "jeffmichaelgomez@gmail.com"
+        git add myfile.json
+        git commit -m "Update JSON file"
+        git push
