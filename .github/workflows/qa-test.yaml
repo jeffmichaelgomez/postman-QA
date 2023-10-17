@@ -2,8 +2,8 @@ name: Fetch and Push JSON
 
 on:
   workflow_dispatch:
-  schedule:
-    - cron:  '0 * * * *' # This runs every hour; adjust the timing as needed
+  # schedule:
+  #   - cron:  '0 * * * *' # This runs every hour; adjust the timing as needed
 
 jobs:
   run:
